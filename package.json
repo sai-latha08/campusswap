@@ -1,0 +1,14 @@
+{
+  "name": "campusswap",
+  "version": "1.0.0",
+  "description": "CampusSwap - Student Resource Sharing Platform (Skills, Rentals, Barter)",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build:client": "npm run build --prefix client",
+    "start:server": "npm run start --prefix server"
+  },
+  "keywords": ["mern", "campusswap", "skills", "rentals", "barter", "react", "express", "mongodb"],
+  "author": "CampusSwap Team",
+  "license": "ISC"
+}
