@@ -63,9 +63,8 @@ async function runPhase9Tests() {
   // Manually update admin user's role to 'admin' in Mongo directly using Mongoose script
   const mongoose = require('mongoose');
   require('dotenv').config();
-  require('./models');
+  const User = require('./models/User');
   await mongoose.connect(process.env.MONGODB_URI);
-  const User = mongoose.model('User');
   await User.findByIdAndUpdate(adminId, { role: 'admin' });
   await mongoose.disconnect();
 
