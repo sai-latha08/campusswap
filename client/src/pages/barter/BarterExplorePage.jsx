@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowRightLeft, Sparkles, BookOpen, ShoppingBag,
-  ShieldCheck, ArrowRight, Zap, Users
+  ShieldCheck, ArrowRight, Zap, Users, Star, Award
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../../services/api';
@@ -35,60 +35,64 @@ export default function BarterExplorePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
       {/* ─── Barter Spotlight Hero ────────────────────────────────────── */}
-      <div className="bg-zinc-900 text-white rounded-2xl p-8 sm:p-12 border border-zinc-800 shadow-sm mb-12 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 border border-indigo-900/50 shadow-md mb-12 relative overflow-hidden">
         <div className="max-w-3xl relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 text-xs font-semibold mb-4 border border-zinc-700">
-            <Sparkles size={13} className="text-white" /> Zero-Cash Skill ↔ Equipment Trade
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold mb-4 border border-amber-400/30">
+            <Sparkles size={13} className="text-amber-300" /> Zero-Cash Skill ↔ Equipment Trade
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold font-display tracking-tight leading-tight text-white">
+          <h1 className="text-3xl sm:text-5xl font-black font-display tracking-tight leading-tight text-white">
             Skill ↔ Item Barter
           </h1>
 
-          <p className="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
             Zero cash required. Offer to teach your peers a skill (like Python, React, UI/UX, or Calculus)
-            in exchange for temporary access to physical equipment like calculators, Arduino kits, cameras, or bikes.
+            in exchange for temporary access to physical equipment like calculators, Arduino kits, cameras, or lab tools.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/barter/requests"
-              className="btn-secondary text-xs py-2.5 px-4 font-semibold text-zinc-950"
+              className="btn-primary text-xs py-2.5 px-4 font-bold bg-white text-slate-950 hover:bg-slate-100"
             >
               <ArrowRightLeft size={14} /> View My Barter Proposals
             </Link>
             <Link
               to="/rentals"
-              className="btn-primary text-xs py-2.5 px-4 bg-zinc-800 border-zinc-700 hover:bg-zinc-700"
+              className="btn-secondary text-xs py-2.5 px-4 bg-indigo-900/60 border-indigo-700 text-white hover:bg-indigo-800"
             >
               <ShoppingBag size={14} /> Browse Items to Barter For
             </Link>
           </div>
         </div>
 
-        {/* Real Example Visual Banner */}
-        <div className="mt-10 pt-8 border-t border-zinc-800 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-          <div className="p-4 bg-zinc-800/60 rounded-xl border border-zinc-700/60">
-            <div className="flex items-center gap-2 text-zinc-300 font-semibold mb-1">
-              <BookOpen size={14} /> You Offer
+        {/* ─── Signature Visual Representation of Barter Trade ─────────── */}
+        <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div className="p-4 bg-white/10 backdrop-blur-xs rounded-2xl border border-white/15">
+            <div className="flex items-center gap-2 text-indigo-300 font-bold mb-1.5">
+              <BookOpen size={16} /> I Teach
             </div>
-            <p className="text-white font-semibold">3 React.js 1-on-1 Sessions</p>
-            <span className="text-[11px] text-zinc-400">Teach hooks & state management</span>
+            <p className="text-white font-black text-sm">React.js Web Dev</p>
+            <span className="text-[11px] text-slate-300 font-medium">3 1-on-1 Mentorship Sessions</span>
           </div>
 
-          <div className="p-4 bg-zinc-800/40 rounded-xl border border-zinc-700/40 flex flex-col justify-center items-center text-center">
-            <ArrowRightLeft size={20} className="text-zinc-300 mb-1" />
-            <span className="text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">Zero Cash Traded</span>
+          <div className="p-4 bg-white/5 backdrop-blur-xs rounded-2xl border border-white/10 flex flex-col justify-center items-center text-center">
+            <div className="w-8 h-8 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center font-bold mb-1 shadow-sm">
+              <ArrowRightLeft size={16} />
+            </div>
+            <span className="text-amber-300 font-black uppercase tracking-wider text-[10px]">
+              0-Cash Fair Trade
+            </span>
           </div>
 
-          <div className="p-4 bg-zinc-800/60 rounded-xl border border-zinc-700/60">
-            <div className="flex items-center gap-2 text-zinc-300 font-semibold mb-1">
-              <ShoppingBag size={14} /> You Receive
+          <div className="p-4 bg-white/10 backdrop-blur-xs rounded-2xl border border-white/15">
+            <div className="flex items-center gap-2 text-emerald-300 font-bold mb-1.5">
+              <ShoppingBag size={16} /> I Receive
             </div>
-            <p className="text-white font-semibold">Arduino Starter Kit</p>
-            <span className="text-[11px] text-zinc-400">For 7 days semester project use</span>
+            <p className="text-white font-black text-sm">Arduino Starter Kit</p>
+            <span className="text-[11px] text-slate-300 font-medium">7 Days Project Lab Use</span>
           </div>
         </div>
       </div>
@@ -96,42 +100,45 @@ export default function BarterExplorePage() {
       {/* ─── How Barter Works ─────────────────────────────────────────── */}
       <div className="mb-14">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 font-display">
+          <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider">
+            Safe Student Protocol
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-950 font-display mt-1">
             How Skill Barter Works in 3 Steps
           </h2>
-          <p className="text-zinc-500 text-xs sm:text-sm mt-1">
-            Fair peer-to-peer exchange with automatic trust verification.
+          <p className="text-slate-500 text-xs sm:text-sm mt-1">
+            Fair peer-to-peer exchange with automatic +3 trust score bonus.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div className="p-6 bg-white rounded-2xl border border-zinc-200 shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-zinc-100 text-zinc-900 flex items-center justify-center font-bold text-xs mb-4 border border-zinc-200">
+          <div className="cs-card p-6">
+            <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-xs mb-4 border border-indigo-100">
               1
             </div>
-            <h3 className="font-semibold text-zinc-900 text-sm mb-1">Find Any Rental Item</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              Click on any item in the marketplace and select <strong>"Offer Skill Instead"</strong>.
+            <h3 className="font-bold text-slate-900 text-sm mb-1.5">Find Any Rental Item</h3>
+            <p className="text-xs text-slate-500 leading-relaxed">
+              Click on any item in the campus marketplace and select <strong>"Offer Skill Instead"</strong>.
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-2xl border border-zinc-200 shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-zinc-100 text-zinc-900 flex items-center justify-center font-bold text-xs mb-4 border border-zinc-200">
+          <div className="cs-card p-6">
+            <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-xs mb-4 border border-amber-200">
               2
             </div>
-            <h3 className="font-semibold text-zinc-900 text-sm mb-1">Propose Your Skill & Duration</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              Choose a skill from your profile (e.g. Python, Design), set teaching sessions, and requested days.
+            <h3 className="font-bold text-slate-900 text-sm mb-1.5">Propose Skill & Duration</h3>
+            <p className="text-xs text-slate-500 leading-relaxed">
+              Choose a skill from your profile (e.g. Python, Design), set teaching hours, and requested equipment access days.
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-2xl border border-zinc-200 shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-zinc-100 text-zinc-900 flex items-center justify-center font-bold text-xs mb-4 border border-zinc-200">
+          <div className="cs-card p-6">
+            <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-xs mb-4 border border-emerald-100">
               3
             </div>
-            <h3 className="font-semibold text-zinc-900 text-sm mb-1">Owner Accepts & Trade Starts</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              Exchange equipment and teach your peer. When finished, both students earn +3 Trust Score points!
+            <h3 className="font-bold text-slate-900 text-sm mb-1.5">Acceptance & +3 Trust Bonus</h3>
+            <p className="text-xs text-slate-500 leading-relaxed">
+              Upon successful completion of the sessions and gear return, both student trust scores receive a +3 PTS boost!
             </p>
           </div>
         </div>
@@ -141,23 +148,23 @@ export default function BarterExplorePage() {
       <div>
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-900 font-display">
+            <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-950 font-display">
               Campus Items Eligible for Skill Barter
             </h2>
-            <p className="text-xs text-zinc-500 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               Click any item to rent with cash OR propose a skill barter exchange.
             </p>
           </div>
 
-          <Link to="/rentals" className="text-xs font-semibold text-zinc-900 hover:underline flex items-center gap-1">
-            View All Marketplace <ArrowRight size={12} />
+          <Link to="/rentals" className="text-xs font-semibold text-indigo-600 hover:underline flex items-center gap-1">
+            View All Marketplace <ArrowRight size={13} />
           </Link>
         </div>
 
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-64 bg-zinc-100 rounded-2xl animate-pulse"></div>
+              <div key={i} className="h-64 bg-slate-100 rounded-2xl animate-pulse" />
             ))}
           </div>
         ) : (
@@ -167,21 +174,23 @@ export default function BarterExplorePage() {
               return (
                 <div
                   key={item._id}
-                  className="bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm hover:border-zinc-300 transition-all flex flex-col justify-between group"
+                  className="cs-card overflow-hidden flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="relative h-40 w-full bg-zinc-100 overflow-hidden">
-                      <img src={primaryImage} alt={item.title} className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-200" />
-                      <span className="absolute top-3 left-3 badge-minimal text-[10px] shadow-sm">
+                    <div className="relative h-40 w-full bg-slate-100 overflow-hidden">
+                      <img src={primaryImage} alt={item.title} className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-200" />
+                      <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-slate-800 backdrop-blur-xs shadow-xs">
                         {item.category}
                       </span>
                     </div>
 
                     <div className="p-4">
-                      <h3 className="font-semibold text-zinc-900 text-sm line-clamp-1">{item.title}</h3>
+                      <h3 className="font-bold text-slate-900 text-sm line-clamp-1">{item.title}</h3>
                       <div className="mt-2 flex items-center justify-between text-xs">
-                        <span className="text-zinc-500">Rent: <strong className="text-zinc-800">₹{item.pricePerDay}/day</strong></span>
-                        <span className="badge-minimal text-[10px]">Barter Ready</span>
+                        <span className="text-slate-500">Rent: <strong className="text-slate-800">${item.pricePerDay}/day</strong></span>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                          Barter Ready
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -191,8 +200,8 @@ export default function BarterExplorePage() {
                       to={`/rentals/${item._id}`}
                       className="btn-secondary w-full text-xs py-2 flex items-center justify-center gap-1.5"
                     >
-                      <ArrowRightLeft size={12} />
-                      Offer Skill Instead
+                      <ArrowRightLeft size={13} className="text-amber-600" />
+                      <span>Offer Skill Instead</span>
                     </Link>
                   </div>
                 </div>

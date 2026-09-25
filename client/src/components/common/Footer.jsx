@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Globe, Share2 } from 'lucide-react';
+import { Globe, Share2, ShieldCheck, Heart } from 'lucide-react';
+import Logo from './Logo';
 
 const footerLinks = {
   Platform: [
@@ -8,70 +9,54 @@ const footerLinks = {
     { label: 'Skill-for-Item Barter', href: '/barter' },
     { label: 'Reputation & Reviews', href: '/reviews' },
   ],
-  Community: [
-    { label: 'How It Works', href: '/#how-it-works' },
-    { label: 'Trust & Safety', href: '/#trust' },
-    { label: 'Campus Guidelines', href: '#' },
-    { label: 'Student Directory', href: '/users' },
+  Explore: [
+    { label: 'Browse Mentors', href: '/skills' },
+    { label: 'Equipment Catalog', href: '/rentals' },
+    { label: 'Barter Trades', href: '/barter' },
+    { label: 'Notifications', href: '/notifications' },
   ],
   Account: [
     { label: 'Sign In', href: '/login' },
     { label: 'Register with .EDU', href: '/register' },
     { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Notifications', href: '/notifications' },
+    { label: 'Public Profile', href: '/profile' },
   ],
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-zinc-200 text-zinc-600">
+    <footer className="bg-white border-t border-slate-200 text-slate-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-3">
-              <div className="w-6 h-6 bg-zinc-900 text-white rounded flex items-center justify-center font-black text-[10px]">
-                CS
-              </div>
-              <span className="font-extrabold text-base text-zinc-900 font-display">
-                CampusSwap
-              </span>
+            <Link to="/" className="inline-flex items-center mb-3">
+              <Logo />
             </Link>
-            <p className="text-zinc-500 text-xs leading-relaxed max-w-sm">
-              The student-to-student sharing platform combining skill exchange, item rentals, and cash-free barter agreements.
+            <p className="text-slate-500 text-xs leading-relaxed max-w-sm">
+              The verified student resource-sharing platform combining skill mentorship, physical item rentals, and 0-cash barter agreements.
             </p>
-            <p className="mt-2 text-zinc-400 font-medium text-xs">
+            <p className="mt-2 text-indigo-700 font-semibold text-xs">
               "Learn. Share. Rent. Grow."
             </p>
 
-            <div className="flex gap-2 mt-4">
-              <a
-                href="#"
-                className="w-7 h-7 bg-zinc-100 hover:bg-zinc-200 rounded-md flex items-center justify-center text-zinc-600 transition-colors"
-                aria-label="Campus Network"
-              >
-                <Globe size={13} />
-              </a>
-              <a
-                href="#"
-                className="w-7 h-7 bg-zinc-100 hover:bg-zinc-200 rounded-md flex items-center justify-center text-zinc-600 transition-colors"
-                aria-label="Share"
-              >
-                <Share2 size={13} />
-              </a>
+            <div className="flex items-center gap-2 mt-4 text-xs text-slate-500">
+              <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200 font-semibold">
+                <ShieldCheck size={13} /> Verified Peer Network
+              </span>
             </div>
           </div>
 
           {/* Nav Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-zinc-950 font-bold text-xs uppercase tracking-wider mb-3">{category}</h4>
+              <h4 className="text-slate-900 font-bold text-xs uppercase tracking-wider mb-3">{category}</h4>
               <ul className="space-y-2">
                 {links.map(({ label, href }) => (
                   <li key={label}>
                     <Link
                       to={href}
-                      className="text-zinc-500 hover:text-zinc-950 text-xs transition-colors"
+                      className="text-slate-500 hover:text-indigo-600 text-xs transition-colors"
                     >
                       {label}
                     </Link>
@@ -82,12 +67,10 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-6 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-400">
-          <p>© {new Date().getFullYear()} CampusSwap. Open student network.</p>
+        <div className="mt-12 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+          <p>© {new Date().getFullYear()} CampusSwap. Open student sharing network.</p>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-zinc-700 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-zinc-700 transition-colors">Terms</a>
-            <a href="#" className="hover:text-zinc-700 transition-colors">Security</a>
+            <span className="text-slate-400">Built for student communities</span>
           </div>
         </div>
       </div>

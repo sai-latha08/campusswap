@@ -66,69 +66,69 @@ export default function ExploreRentalsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* ─── Hero / Header ────────────────────────────────────────────── */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      {/* ─── Header ──────────────────────────────────────────────────── */}
       <div className="mb-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 mb-2">
-              <Sparkles size={13} /> Verified Campus Sharing Marketplace
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200 mb-2">
+              <Sparkles size={13} /> Anti-Overlap Booking Protection
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display">
+            <h1 className="text-3xl font-black text-slate-950 font-display tracking-tight">
               Student Item Rentals
             </h1>
-            <p className="text-slate-600 text-sm mt-1">
-              Rent verified lab equipment, cameras, graphing calculators, and textbooks with anti-overlap booking protection.
+            <p className="text-slate-500 text-xs sm:text-sm mt-1">
+              Rent verified lab equipment, cameras, graphing calculators, and textbooks with calendar conflict prevention.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <Link
               to="/rentals/create"
-              className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-md shadow-emerald-500/20 transition-all hover:scale-102 cursor-pointer"
+              className="btn-emerald text-xs"
             >
-              <Plus size={16} /> List Item for Rent
+              <Plus size={15} /> List Item for Rent
             </Link>
             <Link
               to="/rentals/bookings"
-              className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl shadow-sm transition-all"
+              className="btn-secondary text-xs"
             >
               My Bookings
             </Link>
           </div>
         </div>
 
-        {/* Category Pill Slider */}
-        <div className="mt-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        {/* Category Slider */}
+        <div className="mt-6 flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
           {CATEGORIES.map(({ name, icon: Icon }) => {
             const active = selectedCategory === name;
             return (
               <button
                 key={name}
                 onClick={() => setSelectedCategory(name)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
                   active
-                    ? 'bg-slate-900 text-white shadow-md shadow-slate-900/10 scale-102'
-                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80 hover:text-slate-900'
+                    ? 'bg-indigo-950 text-white shadow-xs'
+                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 hover:text-slate-900'
                 }`}
               >
-                <Icon size={14} className={active ? 'text-emerald-400' : 'text-slate-400'} />
+                <Icon size={14} className={active ? 'text-amber-400' : 'text-slate-400'} />
                 <span>{name}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Search & Secondary Filter Bar */}
-        <div className="mt-4 bg-white rounded-3xl border border-slate-200 p-3 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3">
-          <form onSubmit={handleSearchSubmit} className="relative w-full md:w-96">
+        {/* Search & Filters */}
+        <div className="mt-4 bg-white rounded-2xl border border-slate-200 p-3 shadow-xs flex flex-col md:flex-row items-center justify-between gap-3">
+          <form onSubmit={handleSearchSubmit} className="relative w-full md:w-80">
             <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search by keyword, brand, or model..."
-              className="w-full pl-10 pr-4 py-2 bg-slate-50 focus:bg-white rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 text-xs font-medium outline-none transition-all"
+              placeholder="Search items, models, gear..."
+              className="w-full pl-9 pr-3 py-2 bg-slate-50 focus:bg-white rounded-xl border border-slate-200 focus:border-indigo-600 text-xs font-medium outline-none transition-all"
             />
           </form>
 
@@ -162,17 +162,15 @@ export default function ExploreRentalsPage() {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <div key={i} className="h-80 bg-slate-100 rounded-3xl animate-pulse"></div>
+            <div key={i} className="h-80 bg-slate-100 rounded-3xl animate-pulse" />
           ))}
         </div>
       ) : items.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {items.map((item) => (
-            <motion.div
+            <div
               key={item._id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+              className="cs-card overflow-hidden flex flex-col justify-between group"
             >
               <div>
                 {/* Image Container with Floating Badges */}
@@ -180,17 +178,17 @@ export default function ExploreRentalsPage() {
                   <img
                     src={item.images?.[0]?.url || 'https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=800&q=80'}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
                   {/* Price Tag */}
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black bg-slate-900/85 text-white backdrop-blur-md shadow-md">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black bg-indigo-950/90 text-white backdrop-blur-xs shadow-xs">
                     ${item.pricePerDay}<span className="text-[10px] font-normal text-slate-300">/day</span>
                   </div>
 
                   {/* Condition Tag */}
-                  <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-white/90 text-slate-800 backdrop-blur-md shadow-sm">
+                  <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-slate-800 backdrop-blur-xs shadow-xs">
                     {item.condition}
                   </div>
 
@@ -204,11 +202,11 @@ export default function ExploreRentalsPage() {
 
                 {/* Content */}
                 <div className="p-4">
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 mb-1 uppercase tracking-wider">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-700 mb-1 uppercase tracking-wider">
                     <Tag size={11} /> {item.category}
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-sm line-clamp-1 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="font-bold text-slate-900 text-sm line-clamp-1 group-hover:text-indigo-600 transition-colors">
                     {item.title}
                   </h3>
 
@@ -219,7 +217,7 @@ export default function ExploreRentalsPage() {
                   {/* Owner Chip */}
                   <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
                     <div className="flex items-center gap-2 min-w-0">
-                      <div className="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-[10px] shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-indigo-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">
                         {item.owner?.name?.charAt(0) || 'S'}
                       </div>
                       <span className="text-xs font-semibold text-slate-700 truncate">
@@ -227,7 +225,7 @@ export default function ExploreRentalsPage() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-1 text-[11px] font-black text-amber-500 shrink-0">
+                    <div className="flex items-center gap-1 text-[11px] font-bold text-amber-600 shrink-0">
                       <Star size={12} className="fill-amber-400 text-amber-400" />
                       <span>{item.owner?.trustScore || 50} pts</span>
                     </div>
@@ -239,20 +237,20 @@ export default function ExploreRentalsPage() {
               <div className="p-3 bg-slate-50 border-t border-slate-100 flex items-center gap-2">
                 <Link
                   to={`/rentals/${item._id}`}
-                  className="flex-1 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold text-center transition-colors shadow-sm"
+                  className="btn-primary flex-1 text-xs py-2"
                 >
                   Rent Item
                 </Link>
                 <Link
                   to={`/barter?targetItem=${item._id}`}
-                  className="px-2.5 py-2 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs font-bold flex items-center gap-1 transition-colors"
+                  className="px-2.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-bold flex items-center gap-1 transition-colors border border-amber-200"
                   title="Propose Skill Barter Trade"
                 >
                   <ArrowRightLeft size={14} />
                   <span>Barter</span>
                 </Link>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       ) : (
@@ -262,7 +260,7 @@ export default function ExploreRentalsPage() {
           <p className="text-xs text-slate-400 mt-1">Be the first on campus to list an item for rent!</p>
           <Link
             to="/rentals/create"
-            className="mt-4 inline-block px-5 py-2.5 bg-emerald-600 text-white rounded-xl text-xs font-bold shadow-md shadow-emerald-100"
+            className="btn-emerald mt-4 text-xs"
           >
             + Create First Listing
           </Link>
