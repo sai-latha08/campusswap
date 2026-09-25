@@ -1,12 +1,37 @@
 import axios from 'axios';
 
 /**
- * Axios instance pre-configured for the CampusSwap API.
- * The baseURL is empty because Vite proxies /api → http://localhost:5000.
+ * Automatically determine the API Base URL:
+ * 1. If VITE_API_BASE_URL is set in environment, sanitize and ensure '/api' suffix.
+ * 2. If running in a deployed browser environment (e.g. *.vercel.app) without env var,
+ *    fallback to the production Render backend 'https://campusswap-1-uhvd.onrender.com/api'.
+ * 3. In local development without env var, use '/api' (Vite proxy to localhost:5000).
  */
+const getApiBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_BASE_URL;
+  if (envUrl && typeof envUrl === 'string' && envUrl.trim() !== '') {
+    let clean = envUrl.trim().replace(/\/+$/, '');
+    if (!clean.endsWith('/api')) {
+      clean = `${clean}/api`;
+    }
+    return clean;
+  }
+
+  // Deployed host fallback
+  if (
+    typeof window !== 'undefined' &&
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1'
+  ) {
+    return 'https://campusswap-1-uhvd.onrender.com/api';
+  }
+
+  return '/api';
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
-  withCredentials: true, // send cookies with every request
+  baseURL: getApiBaseUrl(),
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -26,20 +51,16 @@ api.interceptors.request.use(
 );
 
 // ─── Response Interceptor ─────────────────────────────────────────────────────
-// Handle 401 globally — clear token and redirect to login
+// Handle 401 globally by clearing stored token
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
-      // Only redirect if not already on login/register pages
-      const publicPaths = ['/login', '/register', '/'];
-      if (!publicPaths.includes(window.location.pathname)) {
-        window.location.href = '/login';
-      }
     }
     return Promise.reject(error);
   }
 );
 
 export default api;
+

@@ -24,9 +24,17 @@ connectDB().then(async () => {
   const server = http.createServer(app);
 
   // Initialize Socket.io
+  const { isOriginAllowed } = require('./config/corsOrigins');
+
   const io = new Server(server, {
     cors: {
-      origin: [process.env.CLIENT_URL || 'http://localhost:5173', 'http://localhost:3000'],
+      origin: (origin, callback) => {
+        if (isOriginAllowed(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
       credentials: true,
       methods: ['GET', 'POST'],
     },

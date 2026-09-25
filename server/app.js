@@ -29,30 +29,37 @@ const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
+// Trust reverse proxies (Render, Vercel, Nginx)
+app.set('trust proxy', 1);
+
 // ─── Security & Utility Middleware ────────────────────────────────────────────
 
-// Set security HTTP headers
-app.use(helmet());
+// Set security HTTP headers (allowing cross-origin API communication)
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+    crossOriginOpenerPolicy: { policy: 'same-origin-allow-popups' },
+  })
+);
 
-// CORS — allow requests from the React dev server (and production CLIENT_URL)
+// CORS — allow requests from local dev and production client deployments
+const { isOriginAllowed } = require('./config/corsOrigins');
+
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = [
-      process.env.CLIENT_URL || 'http://localhost:5173',
-      'http://localhost:3000',
-    ];
-    // Allow requests with no origin (like curl or Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (isOriginAllowed(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error(`Not allowed by CORS: ${origin}`));
     }
   },
   credentials: true, // Allow cookies
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['Set-Cookie'],
 };
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // enable pre-flight for all routes
 
 // Body parsing
 app.use(express.json({ limit: '10mb' }));
