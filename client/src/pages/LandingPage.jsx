@@ -38,7 +38,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="bg-[#faf6f0] text-stone-900 selection:bg-[#881337] selection:text-white">
+    <div className="bg-[#faf6f0] text-stone-900 selection:bg-[#581c2e] selection:text-white">
       {/* ─── Hero Section with Signature 3D Campus Experience ─────────── */}
       <section className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 border-b border-[#e7ded3] campus-mesh">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,12 +51,12 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e7ded3] text-xs font-semibold text-stone-700 shadow-xs mb-6"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#e7ded3] text-xs font-semibold text-stone-700 shadow-xs mb-6"
               >
-                <span className="w-2 h-2 rounded-full bg-[#166534] animate-pulse" />
-                <span>Verified Campus Sharing Platform</span>
+                <span className="w-2 h-2 rounded-full bg-[#581c2e] animate-pulse" />
+                <span className="font-serif">Verified Campus Sharing Platform</span>
                 <span className="text-stone-300">•</span>
-                <span className="text-[#881337] font-bold">.edu verified</span>
+                <span className="text-[#581c2e] font-bold">.edu verified</span>
               </motion.div>
 
               {/* Exact Requested Hero Copy */}
@@ -64,10 +64,10 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 }}
-                className="text-4xl sm:text-6xl font-black tracking-tight text-stone-950 font-display leading-[1.08]"
+                className="text-4xl sm:text-6xl font-black tracking-tight text-stone-950 font-serif leading-[1.08]"
               >
                 Everything students can share,{' '}
-                <span className="text-[#881337]">in one place.</span>
+                <span className="text-[#581c2e] italic">in one place.</span>
               </motion.h1>
 
               <motion.p
@@ -88,13 +88,13 @@ export default function LandingPage() {
               >
                 <Link
                   to="/skills"
-                  className="btn-primary py-3 px-6 text-sm font-bold shadow-md"
+                  className="btn-primary py-3 px-6 text-sm font-bold shadow-md interactive-scale"
                 >
                   Explore CampusSwap <ArrowRight size={16} />
                 </Link>
                 <Link
                   to="/register"
-                  className="btn-secondary py-3 px-6 text-sm font-bold"
+                  className="btn-secondary py-3 px-6 text-sm font-bold interactive-scale"
                 >
                   Start Sharing
                 </Link>
@@ -107,7 +107,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="mt-8 max-w-xl"
               >
-                <div className="bg-white rounded-2xl border border-[#e7ded3] shadow-sm p-2">
+                <div className="bg-white rounded-2xl border border-[#e7ded3] shadow-sm p-2 hover:border-[#581c2e]/40 transition-colors">
                   {/* Segmented Switcher */}
                   <div className="flex items-center gap-1 p-1 bg-[#f4eee5] rounded-xl mb-2 text-xs font-semibold">
                     {[
@@ -121,7 +121,7 @@ export default function LandingPage() {
                         onClick={() => setActiveSearchTab(tab.id)}
                         className={`flex-1 py-1.5 px-3 rounded-lg transition-all duration-150 cursor-pointer ${
                           activeSearchTab === tab.id
-                            ? 'bg-white text-stone-900 font-bold shadow-xs'
+                            ? 'bg-white text-[#581c2e] font-bold shadow-xs'
                             : 'text-stone-600 hover:text-stone-900'
                         }`}
                       >
@@ -160,7 +160,7 @@ export default function LandingPage() {
 
                 {/* Popular Pills */}
                 <div className="mt-2.5 flex flex-wrap items-center gap-1.5 text-xs text-stone-500">
-                  <span className="text-stone-400 text-[11px] font-medium">Popular:</span>
+                  <span className="text-stone-400 text-[11px] font-medium font-serif">Popular:</span>
                   {['Python / ML', 'DSLR Camera', 'TI-84 Plus', 'Calculus III', '3D Printer'].map((term) => (
                     <button
                       key={term}
@@ -169,7 +169,7 @@ export default function LandingPage() {
                         setSearchQuery(term);
                         navigate(`/skills?search=${encodeURIComponent(term)}`);
                       }}
-                      className="px-2.5 py-0.5 rounded-md bg-white border border-[#e7ded3] hover:bg-[#fbf8f3] text-stone-700 text-[11px] font-medium transition-colors cursor-pointer"
+                      className="px-2.5 py-0.5 rounded-md bg-white border border-[#e7ded3] hover:border-[#581c2e]/40 hover:text-[#581c2e] text-stone-700 text-[11px] font-medium transition-colors cursor-pointer"
                     >
                       {term}
                     </button>
@@ -191,7 +191,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-stone-100">
             <div className="px-4">
-              <div className="text-2xl sm:text-3xl font-bold font-display text-[#581c2e]">
+              <div className="text-2xl sm:text-3xl font-black font-serif text-[#581c2e]">
                 100%
               </div>
               <div className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider mt-0.5">
@@ -199,7 +199,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="px-4">
-              <div className="text-2xl sm:text-3xl font-bold font-display text-[#881337]">
+              <div className="text-2xl sm:text-3xl font-black font-serif text-[#581c2e]">
                 40/20/15
               </div>
               <div className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider mt-0.5">
@@ -207,7 +207,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="px-4">
-              <div className="text-2xl sm:text-3xl font-bold font-display text-[#166534]">
+              <div className="text-2xl sm:text-3xl font-black font-serif text-[#581c2e]">
                 $0 Cash
               </div>
               <div className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider mt-0.5">
@@ -215,7 +215,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="px-4">
-              <div className="text-2xl sm:text-3xl font-bold font-display text-[#b45309]">
+              <div className="text-2xl sm:text-3xl font-black font-serif text-[#581c2e]">
                 0–100 PTS
               </div>
               <div className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider mt-0.5">
@@ -229,10 +229,10 @@ export default function LandingPage() {
       {/* ─── The 3 Core Pillars ────────────────────────────────────────── */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12">
-          <span className="text-xs font-bold text-[#881337] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#581c2e] uppercase tracking-wider font-serif">
             Campus Sharing Models
           </span>
-          <h2 className="text-3xl font-bold text-stone-950 font-display mt-1 tracking-tight">
+          <h2 className="text-3xl font-black text-stone-950 font-serif mt-1 tracking-tight">
             One platform. Three ways to collaborate.
           </h2>
           <p className="text-sm text-stone-600 mt-2">
@@ -242,14 +242,14 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Pillar 1: Skill Exchange */}
-          <div className="cs-card p-6 flex flex-col justify-between">
+          <div className="cs-card cs-card-lift p-6 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#fff1f2] flex items-center justify-center text-[#881337] mb-4 border border-[#fecdd3]">
+              <div className="w-10 h-10 rounded-xl bg-[#fff1f2] flex items-center justify-center text-[#581c2e] mb-4 border border-[#fecdd3]">
                 <BookOpen size={20} />
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="font-bold text-lg text-stone-950 font-display">Skill Exchange</h3>
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#fff1f2] text-[#881337] border border-[#fecdd3]">
+                <h3 className="font-bold text-lg text-stone-950 font-serif">Skill Exchange</h3>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#fff1f2] text-[#581c2e] border border-[#fecdd3]">
                   40/20 Formula
                 </span>
               </div>
@@ -260,35 +260,35 @@ export default function LandingPage() {
               <div className="mt-6 p-3.5 rounded-xl bg-[#faf6f0] border border-[#e7ded3] text-xs space-y-2">
                 <div className="flex justify-between text-stone-600 text-[11px]">
                   <span>Topic Alignment (40%)</span>
-                  <span className="font-bold text-stone-900">Exact Match</span>
+                  <span className="font-bold text-stone-900 font-serif">Exact Match</span>
                 </div>
                 <div className="flex justify-between text-stone-600 text-[11px]">
                   <span>Proficiency Compatibility (20%)</span>
-                  <span className="font-bold text-stone-900">Advanced / Beginner</span>
+                  <span className="font-bold text-stone-900 font-serif">Advanced / Beginner</span>
                 </div>
                 <div className="flex justify-between text-stone-600 text-[11px]">
                   <span>Availability Overlap (15%)</span>
-                  <span className="font-bold text-[#166534]">Conflict-Free</span>
+                  <span className="font-bold text-[#581c2e]">Conflict-Free</span>
                 </div>
               </div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
-              <Link to="/skills" className="text-xs font-semibold text-[#881337] hover:text-[#581c2e] flex items-center gap-1">
+              <Link to="/skills" className="text-xs font-bold text-[#581c2e] hover:underline flex items-center gap-1">
                 Explore Skills <ArrowRight size={13} />
               </Link>
             </div>
           </div>
 
           {/* Pillar 2: Student Rentals */}
-          <div className="cs-card p-6 flex flex-col justify-between">
+          <div className="cs-card cs-card-lift p-6 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#ecfdf5] flex items-center justify-center text-[#166534] mb-4 border border-[#a7f3d0]">
+              <div className="w-10 h-10 rounded-xl bg-[#fff1f2] flex items-center justify-center text-[#581c2e] mb-4 border border-[#fecdd3]">
                 <ShoppingBag size={20} />
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="font-bold text-lg text-stone-950 font-display">Item Rentals</h3>
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#ecfdf5] text-[#166534] border border-[#a7f3d0]">
+                <h3 className="font-bold text-lg text-stone-950 font-serif">Item Rentals</h3>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#fff1f2] text-[#581c2e] border border-[#fecdd3]">
                   Anti-Overlap
                 </span>
               </div>
@@ -303,27 +303,27 @@ export default function LandingPage() {
                 </div>
                 <div className="flex items-center justify-between text-[11px]">
                   <span className="font-semibold text-stone-800">Calendar Blackouts</span>
-                  <span className="text-[#166534] font-bold">Zero clashes</span>
+                  <span className="text-[#581c2e] font-bold font-serif">Zero clashes</span>
                 </div>
               </div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
-              <Link to="/rentals" className="text-xs font-semibold text-[#166534] hover:text-[#14532d] flex items-center gap-1">
+              <Link to="/rentals" className="text-xs font-bold text-[#581c2e] hover:underline flex items-center gap-1">
                 Browse Rental Items <ArrowRight size={13} />
               </Link>
             </div>
           </div>
 
           {/* Pillar 3: Skill-for-Item Barter */}
-          <div className="cs-card p-6 flex flex-col justify-between">
+          <div className="cs-card cs-card-lift p-6 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#fef3c7] flex items-center justify-center text-[#92400e] mb-4 border border-[#fde68a]">
+              <div className="w-10 h-10 rounded-xl bg-[#fff1f2] flex items-center justify-center text-[#581c2e] mb-4 border border-[#fecdd3]">
                 <ArrowRightLeft size={20} />
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="font-bold text-lg text-stone-950 font-display">Skill ↔ Item Barter</h3>
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#fef3c7] text-[#92400e] border border-[#fde68a]">
+                <h3 className="font-bold text-lg text-stone-950 font-serif">Skill ↔ Item Barter</h3>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#fff1f2] text-[#581c2e] border border-[#fecdd3]">
                   Signature 0-Cash
                 </span>
               </div>
@@ -332,17 +332,17 @@ export default function LandingPage() {
               </p>
 
               <div className="mt-6 p-3.5 rounded-xl bg-[#faf6f0] border border-[#e7ded3] text-xs">
-                <div className="font-bold text-stone-900 mb-1">Example Barter Agreement:</div>
+                <div className="font-bold text-stone-900 mb-1 font-serif">Example Barter Agreement:</div>
                 <div className="text-stone-600 text-[11px] space-y-1">
                   <div>• <strong>Offer:</strong> 3 Hours Python Tutoring</div>
                   <div>• <strong>Receive:</strong> 5 Days 3D Printer Access</div>
-                  <div className="text-[#166534] font-semibold pt-1">• +3 Trust Score Bonus on completion</div>
+                  <div className="text-[#581c2e] font-bold pt-1">• +3 Trust Score Bonus on completion</div>
                 </div>
               </div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
-              <Link to="/barter" className="text-xs font-semibold text-[#92400e] hover:text-[#78350f] flex items-center gap-1">
+              <Link to="/barter" className="text-xs font-bold text-[#581c2e] hover:underline flex items-center gap-1">
                 Propose Barter <ArrowRight size={13} />
               </Link>
             </div>
@@ -354,10 +354,10 @@ export default function LandingPage() {
       <section className="py-20 border-t border-[#e7ded3] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-12">
-            <span className="text-xs font-bold text-[#881337] uppercase tracking-wider">
+            <span className="text-xs font-bold text-[#581c2e] uppercase tracking-wider font-serif">
               Student Trust & Reputation
             </span>
-            <h2 className="text-3xl font-bold text-stone-950 font-display mt-1 tracking-tight">
+            <h2 className="text-3xl font-black text-stone-950 font-serif mt-1 tracking-tight">
               Verified campus reputation you can rely on.
             </h2>
             <p className="text-sm text-stone-600 mt-2">
@@ -392,15 +392,15 @@ export default function LandingPage() {
                 tag: 'Gold Member',
               },
             ].map((t, idx) => (
-              <div key={idx} className="cs-card p-6 flex flex-col justify-between">
+              <div key={idx} className="cs-card cs-card-lift p-6 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-0.5 text-amber-500">
+                    <div className="flex items-center gap-0.5 text-[#581c2e]">
                       {[...Array(t.stars)].map((_, i) => (
-                        <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+                        <Star key={i} size={14} className="fill-[#581c2e] text-[#581c2e]" />
                       ))}
                     </div>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#ecfdf5] text-[#166534] border border-[#a7f3d0]">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#fff1f2] text-[#581c2e] border border-[#fecdd3]">
                       ★ {t.score} PTS
                     </span>
                   </div>
@@ -412,10 +412,10 @@ export default function LandingPage() {
 
                 <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
                   <div>
-                    <strong className="text-stone-900 block">{t.name}</strong>
+                    <strong className="text-stone-900 block font-serif">{t.name}</strong>
                     <span className="text-[11px] text-stone-500">{t.role}</span>
                   </div>
-                  <span className="text-[10px] font-semibold text-stone-600 bg-[#faf6f0] px-2 py-0.5 rounded border border-[#e7ded3]">
+                  <span className="text-[10px] font-semibold text-[#581c2e] bg-[#faf6f0] px-2.5 py-1 rounded-full border border-[#e7ded3]">
                     {t.tag}
                   </span>
                 </div>
@@ -428,24 +428,24 @@ export default function LandingPage() {
       {/* ─── Clean Bottom CTA Banner ──────────────────────────────────── */}
       <section className="py-20 border-t border-[#e7ded3] bg-[#faf6f0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#581c2e] via-[#3b111e] to-[#581c2e] text-white rounded-3xl p-10 sm:p-14 text-center max-w-3xl mx-auto shadow-xl border border-[#70243b]">
-            <h2 className="text-3xl sm:text-4xl font-black font-display tracking-tight text-white">
+          <div className="bg-gradient-to-br from-[#581c2e] via-[#4a1220] to-[#380e1a] text-white rounded-3xl p-10 sm:p-14 text-center max-w-3xl mx-auto shadow-2xl border border-[#70243b]">
+            <h2 className="text-3xl sm:text-4xl font-black font-serif tracking-tight text-white">
               Start sharing on your campus.
             </h2>
-            <p className="text-xs sm:text-sm text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#faf6f0]/90 mt-3 max-w-md mx-auto leading-relaxed">
               Join verified students learning skills, renting equipment, and building campus reputation.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 to="/register"
-                className="w-full sm:w-auto px-6 py-3 bg-white text-stone-950 hover:bg-[#faf6f0] font-bold text-xs rounded-xl shadow-xs transition-colors"
+                className="w-full sm:w-auto px-6 py-3 bg-[#faf6f0] text-[#581c2e] hover:bg-white font-bold text-xs rounded-xl shadow-md transition-all interactive-scale"
               >
                 Create Free Account (.edu)
               </Link>
               <Link
                 to="/skills"
-                className="w-full sm:w-auto px-6 py-3 bg-[#3b111e] hover:bg-[#4a1523] text-white font-bold text-xs rounded-xl border border-[#70243b] transition-colors"
+                className="w-full sm:w-auto px-6 py-3 bg-[#380e1a]/80 hover:bg-[#380e1a] text-white font-bold text-xs rounded-xl border border-[#70243b] transition-all interactive-scale"
               >
                 Browse Marketplace
               </Link>
