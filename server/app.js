@@ -85,6 +85,21 @@ const generalLimiter = rateLimit({
 
 app.use('/api', generalLimiter);
 
+// ─── Root Status Endpoint ───────────────────────────────────────────────────
+
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Welcome to CampusSwap Backend API',
+    data: {
+      status: 'active',
+      version: '1.0.0',
+      health: '/api/health',
+      clientUrl: process.env.CLIENT_URL || 'https://campusswap-taupe.vercel.app',
+    },
+  });
+});
+
 // ─── Routes ───────────────────────────────────────────────────────────────────
 
 app.use('/api/health', healthRoutes);
