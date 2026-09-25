@@ -185,41 +185,41 @@ export default function MessagesPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 h-[calc(100vh-80px)] flex flex-col">
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm flex-1 flex overflow-hidden">
+      <div className="bg-white rounded-3xl border border-[#e7ded3] shadow-sm flex-1 flex overflow-hidden">
         {/* ─── Left Panel: Conversations List ─────────────────────────── */}
         <div
-          className={`w-full md:w-80 lg:w-96 border-r border-slate-200 flex flex-col bg-slate-50/60 ${
+          className={`w-full md:w-80 lg:w-96 border-r border-[#e7ded3] flex flex-col bg-[#faf6f0]/70 ${
             activePartner ? 'hidden md:flex' : 'flex'
           }`}
         >
           {/* Header & Search */}
-          <div className="p-4 border-b border-slate-200 bg-white">
-            <h2 className="text-lg font-bold tracking-tight text-slate-900 font-display mb-3">Campus Messages</h2>
+          <div className="p-4 border-b border-[#e7ded3] bg-white">
+            <h2 className="text-lg font-bold tracking-tight text-stone-900 font-display mb-3">Campus Messages</h2>
             <div className="relative">
-              <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search conversations..."
-                className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:bg-white focus:border-indigo-600 transition-colors"
+                className="w-full pl-9 pr-3 py-2 bg-[#faf6f0] border border-[#e7ded3] rounded-xl text-xs text-stone-900 outline-none focus:bg-white focus:border-[#881337] transition-colors"
               />
             </div>
           </div>
 
           {/* List */}
-          <div className="flex-1 overflow-y-auto divide-y divide-slate-100">
+          <div className="flex-1 overflow-y-auto divide-y divide-stone-100">
             {loadingConv ? (
               <div className="p-4 space-y-3">
                 {[...Array(4)].map((_, i) => (
-                  <div key={i} className="h-14 bg-slate-100 rounded-2xl animate-pulse" />
+                  <div key={i} className="h-14 bg-stone-100 rounded-2xl animate-pulse" />
                 ))}
               </div>
             ) : filteredConversations.length === 0 ? (
-              <div className="p-8 text-center text-slate-400 text-xs">
-                <MessageSquare size={28} className="mx-auto mb-2 opacity-30 text-indigo-400" />
-                <p className="font-semibold text-slate-700">No active conversations</p>
-                <p className="mt-1 text-[11px] text-slate-400">Send a message to a peer from their skill or rental listing.</p>
+              <div className="p-8 text-center text-stone-400 text-xs">
+                <MessageSquare size={28} className="mx-auto mb-2 opacity-30 text-[#881337]" />
+                <p className="font-semibold text-stone-700">No active conversations</p>
+                <p className="mt-1 text-[11px] text-stone-400">Send a message to a peer from their skill or rental listing.</p>
               </div>
             ) : (
               filteredConversations.map((conv) => {
@@ -231,33 +231,33 @@ export default function MessagesPage() {
                     key={conv.conversationId}
                     onClick={() => handleSelectConversation(conv)}
                     className={`w-full p-4 flex items-center gap-3.5 text-left transition-colors cursor-pointer ${
-                      isSelected ? 'bg-indigo-50/80 border-r-3 border-indigo-600' : 'hover:bg-slate-100/70'
+                      isSelected ? 'bg-[#fff1f2] border-r-3 border-[#881337]' : 'hover:bg-[#f4eee5]'
                     }`}
                   >
                     {/* Avatar with Online Dot */}
                     <div className="relative shrink-0">
-                      <div className="w-10 h-10 rounded-2xl bg-indigo-950 text-white font-bold text-xs flex items-center justify-center shadow-xs">
+                      <div className="w-10 h-10 rounded-2xl bg-[#581c2e] text-white font-bold text-xs flex items-center justify-center shadow-xs">
                         {conv.partner?.name?.charAt(0)?.toUpperCase()}
                       </div>
                       <span
                         className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white ${
-                          isOnline ? 'bg-emerald-500' : 'bg-slate-300'
+                          isOnline ? 'bg-[#166534]' : 'bg-stone-300'
                         }`}
                       />
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1 mb-0.5">
-                        <h4 className="font-bold text-slate-900 text-xs truncate">{conv.partner?.name}</h4>
-                        <span className="text-[10px] text-slate-400 shrink-0">
+                        <h4 className="font-bold text-stone-900 text-xs truncate">{conv.partner?.name}</h4>
+                        <span className="text-[10px] text-stone-400 shrink-0">
                           {new Date(conv.latestMessageTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-500 truncate">{conv.latestMessage}</p>
+                      <p className="text-xs text-stone-500 truncate">{conv.latestMessage}</p>
                     </div>
 
                     {conv.unreadCount > 0 && (
-                      <span className="w-4 h-4 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                      <span className="w-4 h-4 rounded-full bg-[#881337] text-white text-[10px] font-bold flex items-center justify-center shrink-0">
                         {conv.unreadCount}
                       </span>
                     )}
@@ -273,36 +273,36 @@ export default function MessagesPage() {
           {activePartner ? (
             <>
               {/* Active Partner Header */}
-              <div className="p-4 px-6 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
+              <div className="p-4 px-6 border-b border-[#e7ded3] flex items-center justify-between bg-[#faf6f0]">
                 <div className="flex items-center gap-3.5">
                   <button
                     onClick={() => setActivePartner(null)}
-                    className="md:hidden p-1.5 rounded-xl hover:bg-slate-200 text-slate-500 cursor-pointer"
+                    className="md:hidden p-1.5 rounded-xl hover:bg-stone-200 text-stone-500 cursor-pointer"
                   >
                     <ArrowLeft size={16} />
                   </button>
 
                   <div className="relative">
-                    <div className="w-10 h-10 rounded-2xl bg-indigo-950 text-white font-bold text-xs flex items-center justify-center shadow-xs">
+                    <div className="w-10 h-10 rounded-2xl bg-[#581c2e] text-white font-bold text-xs flex items-center justify-center shadow-xs">
                       {activePartner.name?.charAt(0)?.toUpperCase()}
                     </div>
                     <span
                       className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white ${
-                        isPartnerOnline ? 'bg-emerald-500' : 'bg-slate-300'
+                        isPartnerOnline ? 'bg-[#166534]' : 'bg-stone-300'
                       }`}
                     />
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                    <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
                       {activePartner.name}
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#ecfdf5] text-[#166534] border border-[#a7f3d0]">
                         ★ {activePartner.trustScore || 50} PTS
                       </span>
                     </h3>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-stone-500">
                       {isPartnerOnline ? (
-                        <span className="text-emerald-600 font-semibold">● Online on campus</span>
+                        <span className="text-[#166534] font-semibold">● Online on campus</span>
                       ) : (
                         <span>{activePartner.college}</span>
                       )}
@@ -319,14 +319,14 @@ export default function MessagesPage() {
               </div>
 
               {/* Message History Stream */}
-              <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-3 bg-[#fafaf9]">
+              <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-3 bg-[#faf6f0]/40">
                 {loadingMessages ? (
-                  <div className="py-20 text-center text-xs text-slate-400">Loading conversation history...</div>
+                  <div className="py-20 text-center text-xs text-stone-400">Loading conversation history...</div>
                 ) : messages.length === 0 ? (
-                  <div className="py-20 text-center text-xs text-slate-400">
-                    <Sparkles size={24} className="mx-auto mb-2 text-indigo-400 opacity-60" />
-                    <p className="font-bold text-slate-800 text-sm">Start your conversation!</p>
-                    <p className="text-[11px] text-slate-500 mt-1">Discuss skill exchange hours, item return dates, or lab meetings.</p>
+                  <div className="py-20 text-center text-xs text-stone-400">
+                    <Sparkles size={24} className="mx-auto mb-2 text-[#881337] opacity-60" />
+                    <p className="font-bold text-stone-800 text-sm">Start your conversation!</p>
+                    <p className="text-[11px] text-stone-500 mt-1">Discuss skill exchange hours, item return dates, or lab meetings.</p>
                   </div>
                 ) : (
                   messages.map((msg) => {
@@ -339,16 +339,16 @@ export default function MessagesPage() {
                         <div
                           className={`max-w-[80%] sm:max-w-[70%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed shadow-xs ${
                             isMe
-                              ? 'bg-indigo-950 text-white rounded-br-xs'
-                              : 'bg-white text-slate-900 border border-slate-200 rounded-bl-xs'
+                              ? 'bg-[#581c2e] text-white rounded-br-xs'
+                              : 'bg-white text-stone-900 border border-[#e7ded3] rounded-bl-xs'
                           }`}
                         >
                           <p>{msg.message}</p>
                         </div>
-                        <span className="text-[10px] text-slate-400 mt-1 px-1 flex items-center gap-1 font-medium">
+                        <span className="text-[10px] text-stone-400 mt-1 px-1 flex items-center gap-1 font-medium">
                           {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           {isMe && (
-                            <span className={msg.read ? 'text-indigo-600 font-bold' : 'text-slate-400'}>
+                            <span className={msg.read ? 'text-[#881337] font-bold' : 'text-stone-400'}>
                               ✓✓
                             </span>
                           )}
@@ -360,11 +360,11 @@ export default function MessagesPage() {
 
                 {/* Typing Indicator */}
                 {isPartnerTyping && (
-                  <div className="flex items-center gap-2 text-xs text-indigo-600 italic py-1">
+                  <div className="flex items-center gap-2 text-xs text-[#881337] italic py-1">
                     <div className="flex gap-1">
-                      <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce" />
-                      <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce [animation-delay:0.2s]" />
-                      <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-bounce [animation-delay:0.4s]" />
+                      <span className="w-1.5 h-1.5 bg-[#881337] rounded-full animate-bounce" />
+                      <span className="w-1.5 h-1.5 bg-[#881337] rounded-full animate-bounce [animation-delay:0.2s]" />
+                      <span className="w-1.5 h-1.5 bg-[#881337] rounded-full animate-bounce [animation-delay:0.4s]" />
                     </div>
                     <span>{activePartner.name} is typing...</span>
                   </div>
@@ -374,30 +374,30 @@ export default function MessagesPage() {
               </div>
 
               {/* Message Input Bar */}
-              <form onSubmit={handleSendMessage} className="p-3.5 border-t border-slate-200 bg-white flex items-center gap-2">
+              <form onSubmit={handleSendMessage} className="p-3.5 border-t border-[#e7ded3] bg-white flex items-center gap-2">
                 <input
                   type="text"
                   value={messageText}
                   onChange={handleTypingChange}
                   placeholder={`Message ${activePartner.name}...`}
-                  className="flex-1 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-900 outline-none focus:bg-white focus:border-indigo-600 transition-all"
+                  className="flex-1 px-4 py-2.5 bg-[#faf6f0] border border-[#e7ded3] rounded-2xl text-xs text-stone-900 outline-none focus:bg-white focus:border-[#881337] transition-all"
                 />
                 <button
                   type="submit"
                   disabled={!messageText.trim()}
-                  className="p-2.5 bg-indigo-950 hover:bg-indigo-900 text-white rounded-2xl transition-colors disabled:opacity-40 cursor-pointer shadow-xs"
+                  className="p-2.5 bg-[#581c2e] hover:bg-[#70243b] text-white rounded-2xl transition-colors disabled:opacity-40 cursor-pointer shadow-xs border border-[#451523]"
                 >
                   <Send size={15} />
                 </button>
               </form>
             </>
           ) : (
-            <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-400">
-              <div className="w-14 h-14 rounded-3xl bg-indigo-50 text-indigo-700 flex items-center justify-center mb-3 border border-indigo-100">
+            <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-stone-400">
+              <div className="w-14 h-14 rounded-3xl bg-[#fff1f2] text-[#881337] flex items-center justify-center mb-3 border border-[#fecdd3]">
                 <MessageSquare size={22} />
               </div>
-              <h3 className="font-bold text-slate-900 text-sm">Select a Student to Chat</h3>
-              <p className="text-xs text-slate-500 mt-1 max-w-xs leading-relaxed">
+              <h3 className="font-bold text-stone-900 text-sm">Select a Student to Chat</h3>
+              <p className="text-xs text-stone-500 mt-1 max-w-xs leading-relaxed">
                 Choose an ongoing conversation from the left or contact a student mentor directly from their skill profile.
               </p>
             </div>

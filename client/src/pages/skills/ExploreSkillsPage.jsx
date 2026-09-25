@@ -135,13 +135,13 @@ export default function ExploreSkillsPage() {
       <div className="mb-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-semibold mb-2 border border-indigo-100">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff1f2] text-[#881337] text-xs font-semibold mb-2 border border-[#fecdd3]">
               <Sparkles size={13} /> 40/20 Matchmaking Engine
             </div>
-            <h1 className="text-3xl font-black text-slate-950 font-display tracking-tight">
+            <h1 className="text-3xl font-black text-stone-950 font-display tracking-tight">
               Campus Skills Exchange
             </h1>
-            <p className="text-slate-500 text-xs sm:text-sm mt-1">
+            <p className="text-stone-500 text-xs sm:text-sm mt-1">
               Find verified student mentors, view rule-based compatibility scores, and schedule 1-on-1 sessions.
             </p>
           </div>
@@ -170,8 +170,8 @@ export default function ExploreSkillsPage() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-indigo-950 text-white shadow-xs'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 hover:text-slate-900'
+                  ? 'bg-[#581c2e] text-white shadow-xs'
+                  : 'bg-white text-stone-600 hover:bg-[#faf6f0] border border-[#e7ded3] hover:text-stone-900'
               }`}
             >
               {cat}
@@ -182,13 +182,13 @@ export default function ExploreSkillsPage() {
         {/* Search Bar */}
         <form onSubmit={handleSearchSubmit} className="mt-4 flex gap-2 max-w-md">
           <div className="relative flex-1">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search Python, React, UI/UX, Calculus..."
-              className="w-full pl-9 pr-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:border-indigo-600 outline-none"
+              className="w-full pl-9 pr-3 py-2 bg-white border border-[#e7ded3] rounded-xl text-xs font-medium focus:border-[#881337] outline-none"
             />
           </div>
           <button
@@ -204,14 +204,14 @@ export default function ExploreSkillsPage() {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="h-44 bg-slate-100 rounded-2xl animate-pulse" />
+            <div key={i} className="h-44 bg-stone-100 rounded-2xl animate-pulse" />
           ))}
         </div>
       ) : skills.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-2xl border border-slate-200">
-          <BookOpen size={36} className="text-slate-300 mx-auto mb-2" />
-          <h3 className="font-bold text-slate-900 text-sm">No skills found</h3>
-          <p className="text-slate-400 text-xs mt-1">Try another search keyword or select a different category.</p>
+        <div className="text-center py-16 bg-white rounded-2xl border border-[#e7ded3]">
+          <BookOpen size={36} className="text-stone-300 mx-auto mb-2" />
+          <h3 className="font-bold text-stone-900 text-sm">No skills found</h3>
+          <p className="text-stone-400 text-xs mt-1">Try another search keyword or select a different category.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -222,22 +222,22 @@ export default function ExploreSkillsPage() {
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100 uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#fff1f2] text-[#881337] border border-[#fecdd3] uppercase tracking-wider">
                     {skill.category}
                   </span>
-                  <span className="text-[11px] text-slate-500 flex items-center gap-1 font-semibold">
-                    <Users size={12} className="text-slate-400" />
+                  <span className="text-[11px] text-stone-500 flex items-center gap-1 font-semibold">
+                    <Users size={12} className="text-stone-400" />
                     {skill.teacherCount} {skill.teacherCount === 1 ? 'Mentor' : 'Mentors'}
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-slate-950 font-display mb-1">{skill.name}</h3>
-                <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                <h3 className="text-base font-bold text-stone-950 font-display mb-1">{skill.name}</h3>
+                <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed">
                   {skill.description || 'Learn and exchange knowledge with fellow university peers.'}
                 </p>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-slate-100">
+              <div className="mt-5 pt-3 border-t border-stone-100">
                 <button
                   onClick={() => handleOpenSkill(skill)}
                   className="btn-primary w-full text-xs py-2"
@@ -254,24 +254,24 @@ export default function ExploreSkillsPage() {
       {/* ─── Mentors / Teachers Modal ─────────────────────────────────── */}
       <AnimatePresence>
         {activeSkill && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/60 backdrop-blur-xs">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 8 }}
-              className="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden"
+              className="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-[#e7ded3] overflow-hidden"
             >
               {/* Modal Header */}
-              <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
+              <div className="p-6 border-b border-stone-100 flex items-center justify-between bg-[#faf6f0]">
                 <div>
-                  <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider">{activeSkill.category}</span>
-                  <h2 className="text-xl font-bold text-slate-900 font-display mt-0.5">
+                  <span className="text-xs font-bold text-[#881337] uppercase tracking-wider">{activeSkill.category}</span>
+                  <h2 className="text-xl font-bold text-stone-900 font-display mt-0.5">
                     Students Teaching {activeSkill.name}
                   </h2>
                 </div>
                 <button
                   onClick={() => setActiveSkill(null)}
-                  className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+                  className="p-2 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-200 transition-colors cursor-pointer"
                 >
                   <X size={20} />
                 </button>
@@ -281,14 +281,14 @@ export default function ExploreSkillsPage() {
               <div className="p-6 overflow-y-auto space-y-4 flex-1">
                 {loadingTeachers ? (
                   <div className="py-12 text-center">
-                    <div className="w-8 h-8 border-3 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
-                    <p className="text-xs text-slate-500 font-medium">Calculating skill match scores...</p>
+                    <div className="w-8 h-8 border-3 border-[#881337] border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                    <p className="text-xs text-stone-500 font-medium">Calculating skill match scores...</p>
                   </div>
                 ) : teachers.length === 0 ? (
-                  <div className="py-12 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200">
-                    <Users size={32} className="text-slate-400 mx-auto mb-2" />
-                    <h4 className="font-bold text-slate-800 text-sm">No students teaching this skill yet</h4>
-                    <p className="text-xs text-slate-500 mt-1">Be the first on campus to offer this skill!</p>
+                  <div className="py-12 text-center bg-[#faf6f0] rounded-2xl border border-dashed border-[#e7ded3]">
+                    <Users size={32} className="text-stone-400 mx-auto mb-2" />
+                    <h4 className="font-bold text-stone-800 text-sm">No students teaching this skill yet</h4>
+                    <p className="text-xs text-stone-500 mt-1">Be the first on campus to offer this skill!</p>
                     {isAuthenticated && (
                       <Link
                         to="/skills/my-skills"
@@ -302,21 +302,21 @@ export default function ExploreSkillsPage() {
                   teachers.map((teacher) => (
                     <div
                       key={teacher._id}
-                      className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-indigo-200 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                      className="p-5 rounded-2xl border border-[#e7ded3] bg-white hover:border-[#881337] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-indigo-950 text-white font-bold text-lg flex items-center justify-center shrink-0 shadow-xs">
+                        <div className="w-12 h-12 rounded-2xl bg-[#581c2e] text-white font-bold text-lg flex items-center justify-center shrink-0 shadow-xs">
                           {teacher.name?.charAt(0)?.toUpperCase()}
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <h4 className="font-bold text-slate-900 text-sm">{teacher.name}</h4>
-                            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                            <h4 className="font-bold text-stone-900 text-sm">{teacher.name}</h4>
+                            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#fff1f2] text-[#881337] border border-[#fecdd3]">
                               {teacher.matchScore}% Match
                             </span>
                           </div>
 
-                          <p className="text-xs text-slate-500 mt-0.5 flex flex-wrap items-center gap-1.5">
+                          <p className="text-xs text-stone-500 mt-0.5 flex flex-wrap items-center gap-1.5">
                             <Building size={12} /> {teacher.college}
                             {teacher.branch && (
                               <>
@@ -326,8 +326,8 @@ export default function ExploreSkillsPage() {
                             )}
                           </p>
 
-                          <div className="flex items-center gap-3 mt-2 text-[11px] text-slate-600 font-medium">
-                            <span className="flex items-center gap-1 text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                          <div className="flex items-center gap-3 mt-2 text-[11px] text-stone-600 font-medium">
+                            <span className="flex items-center gap-1 text-[#166534] font-bold bg-[#ecfdf5] px-2 py-0.5 rounded-md border border-[#a7f3d0]">
                               <ShieldCheck size={13} /> Trust: {teacher.trustScore}/100 PTS
                             </span>
                             <span>•</span>
@@ -335,7 +335,7 @@ export default function ExploreSkillsPage() {
                           </div>
 
                           {teacher.skillDescription && (
-                            <p className="text-xs text-slate-600 mt-2 italic bg-slate-50 p-2 rounded-lg">
+                            <p className="text-xs text-stone-600 mt-2 italic bg-[#faf6f0] p-2 rounded-lg border border-[#e7ded3]">
                               "{teacher.skillDescription}"
                             </p>
                           )}
@@ -368,39 +368,39 @@ export default function ExploreSkillsPage() {
       {/* ─── Request Proposal Modal ───────────────────────────────────── */}
       <AnimatePresence>
         {requestModalOpen && selectedTeacher && activeSkill && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/60 backdrop-blur-xs">
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200"
+              className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-[#e7ded3]"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-slate-900 font-display">
+                <h3 className="text-lg font-bold text-stone-900 font-display">
                   Request Skill Exchange
                 </h3>
                 <button
                   onClick={() => setRequestModalOpen(false)}
-                  className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg cursor-pointer"
+                  className="p-1.5 text-stone-400 hover:text-stone-600 rounded-lg cursor-pointer"
                 >
                   <X size={18} />
                 </button>
               </div>
 
-              <div className="p-3.5 bg-indigo-50/80 rounded-2xl border border-indigo-100 mb-5 text-xs text-indigo-950">
+              <div className="p-3.5 bg-[#fff1f2] rounded-2xl border border-[#fecdd3] mb-5 text-xs text-[#581c2e]">
                 <span className="font-bold">Skill:</span> {activeSkill.name} <br />
                 <span className="font-bold">Mentor:</span> {selectedTeacher.name} ({selectedTeacher.college})
               </div>
 
               <form onSubmit={handleSendRequest} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-semibold text-stone-700 mb-1.5">
                     Preferred Mode
                   </label>
                   <select
                     value={requestData.preferredMode}
                     onChange={(e) => setRequestData({ ...requestData, preferredMode: e.target.value })}
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none"
+                    className="w-full p-2.5 bg-[#faf6f0] border border-[#e7ded3] rounded-xl text-xs outline-none"
                   >
                     <option value="online">Online (Google Meet / Zoom)</option>
                     <option value="in-person">In-Person (Campus Library / Lab)</option>
@@ -409,7 +409,7 @@ export default function ExploreSkillsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-semibold text-stone-700 mb-1.5">
                     Preferred Time / Availability
                   </label>
                   <input
@@ -417,12 +417,12 @@ export default function ExploreSkillsPage() {
                     value={requestData.preferredTime}
                     onChange={(e) => setRequestData({ ...requestData, preferredTime: e.target.value })}
                     placeholder="e.g. Weekday evenings after 5 PM"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none"
+                    className="w-full p-2.5 bg-[#faf6f0] border border-[#e7ded3] rounded-xl text-xs outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-semibold text-stone-700 mb-1.5">
                     Message to Mentor
                   </label>
                   <textarea
@@ -431,7 +431,7 @@ export default function ExploreSkillsPage() {
                     onChange={(e) => setRequestData({ ...requestData, description: e.target.value })}
                     placeholder="Describe what specific topics you'd like guidance on..."
                     required
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none"
+                    className="w-full p-2.5 bg-[#faf6f0] border border-[#e7ded3] rounded-xl text-xs outline-none"
                   />
                 </div>
 

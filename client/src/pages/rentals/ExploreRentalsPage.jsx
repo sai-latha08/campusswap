@@ -71,13 +71,13 @@ export default function ExploreRentalsPage() {
       <div className="mb-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200 mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ecfdf5] text-[#166534] text-xs font-semibold border border-[#a7f3d0] mb-2">
               <Sparkles size={13} /> Anti-Overlap Booking Protection
             </div>
-            <h1 className="text-3xl font-black text-slate-950 font-display tracking-tight">
+            <h1 className="text-3xl font-black text-stone-950 font-display tracking-tight">
               Student Item Rentals
             </h1>
-            <p className="text-slate-500 text-xs sm:text-sm mt-1">
+            <p className="text-stone-500 text-xs sm:text-sm mt-1">
               Rent verified lab equipment, cameras, graphing calculators, and textbooks with calendar conflict prevention.
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function ExploreRentalsPage() {
           <div className="flex items-center gap-2.5">
             <Link
               to="/rentals/create"
-              className="btn-emerald text-xs"
+              className="btn-forest text-xs"
             >
               <Plus size={15} /> List Item for Rent
             </Link>
@@ -108,11 +108,11 @@ export default function ExploreRentalsPage() {
                 onClick={() => setSelectedCategory(name)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
                   active
-                    ? 'bg-indigo-950 text-white shadow-xs'
-                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 hover:text-slate-900'
+                    ? 'bg-[#581c2e] text-white shadow-xs'
+                    : 'bg-white text-stone-600 hover:bg-[#faf6f0] border border-[#e7ded3] hover:text-stone-900'
                 }`}
               >
-                <Icon size={14} className={active ? 'text-amber-400' : 'text-slate-400'} />
+                <Icon size={14} className={active ? 'text-amber-300' : 'text-stone-400'} />
                 <span>{name}</span>
               </button>
             );
@@ -120,15 +120,15 @@ export default function ExploreRentalsPage() {
         </div>
 
         {/* Search & Filters */}
-        <div className="mt-4 bg-white rounded-2xl border border-slate-200 p-3 shadow-xs flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="mt-4 bg-white rounded-2xl border border-[#e7ded3] p-3 shadow-xs flex flex-col md:flex-row items-center justify-between gap-3">
           <form onSubmit={handleSearchSubmit} className="relative w-full md:w-80">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search items, models, gear..."
-              className="w-full pl-9 pr-3 py-2 bg-slate-50 focus:bg-white rounded-xl border border-slate-200 focus:border-indigo-600 text-xs font-medium outline-none transition-all"
+              className="w-full pl-9 pr-3 py-2 bg-[#faf6f0] focus:bg-white rounded-xl border border-[#e7ded3] focus:border-[#881337] text-xs font-medium outline-none transition-all"
             />
           </form>
 
@@ -136,7 +136,7 @@ export default function ExploreRentalsPage() {
             <select
               value={conditionFilter}
               onChange={(e) => setConditionFilter(e.target.value)}
-              className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 bg-white outline-none cursor-pointer"
+              className="px-3 py-2 rounded-xl border border-[#e7ded3] text-xs font-semibold text-stone-700 bg-white outline-none cursor-pointer"
             >
               <option value="All">All Conditions</option>
               <option value="Brand New">Brand New</option>
@@ -148,7 +148,7 @@ export default function ExploreRentalsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 bg-white outline-none cursor-pointer"
+              className="px-3 py-2 rounded-xl border border-[#e7ded3] text-xs font-semibold text-stone-700 bg-white outline-none cursor-pointer"
             >
               <option value="latest">Latest First</option>
               <option value="price_asc">Price: Low to High</option>
@@ -162,7 +162,7 @@ export default function ExploreRentalsPage() {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <div key={i} className="h-80 bg-slate-100 rounded-3xl animate-pulse" />
+            <div key={i} className="h-80 bg-stone-100 rounded-3xl animate-pulse" />
           ))}
         </div>
       ) : items.length > 0 ? (
@@ -174,21 +174,21 @@ export default function ExploreRentalsPage() {
             >
               <div>
                 {/* Image Container with Floating Badges */}
-                <div className="relative h-48 bg-slate-100 overflow-hidden">
+                <div className="relative h-48 bg-stone-100 overflow-hidden">
                   <img
                     src={item.images?.[0]?.url || 'https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=800&q=80'}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent" />
 
                   {/* Price Tag */}
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black bg-indigo-950/90 text-white backdrop-blur-xs shadow-xs">
-                    ${item.pricePerDay}<span className="text-[10px] font-normal text-slate-300">/day</span>
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black bg-[#581c2e]/90 text-white backdrop-blur-xs shadow-xs border border-[#70243b]">
+                    ${item.pricePerDay}<span className="text-[10px] font-normal text-rose-200">/day</span>
                   </div>
 
                   {/* Condition Tag */}
-                  <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-slate-800 backdrop-blur-xs shadow-xs">
+                  <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-stone-800 backdrop-blur-xs shadow-xs">
                     {item.condition}
                   </div>
 
@@ -202,25 +202,25 @@ export default function ExploreRentalsPage() {
 
                 {/* Content */}
                 <div className="p-4">
-                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-700 mb-1 uppercase tracking-wider">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#881337] mb-1 uppercase tracking-wider">
                     <Tag size={11} /> {item.category}
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-sm line-clamp-1 group-hover:text-indigo-600 transition-colors">
+                  <h3 className="font-bold text-stone-900 text-sm line-clamp-1 group-hover:text-[#881337] transition-colors">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-stone-500 mt-1 line-clamp-2 leading-relaxed">
                     {item.description}
                   </p>
 
                   {/* Owner Chip */}
-                  <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <div className="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between">
                     <div className="flex items-center gap-2 min-w-0">
-                      <div className="w-6 h-6 rounded-full bg-indigo-950 text-white font-bold flex items-center justify-center text-[10px] shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-[#581c2e] text-white font-bold flex items-center justify-center text-[10px] shrink-0">
                         {item.owner?.name?.charAt(0) || 'S'}
                       </div>
-                      <span className="text-xs font-semibold text-slate-700 truncate">
+                      <span className="text-xs font-semibold text-stone-700 truncate">
                         {item.owner?.name || 'Student'}
                       </span>
                     </div>
@@ -234,7 +234,7 @@ export default function ExploreRentalsPage() {
               </div>
 
               {/* Actions Footer */}
-              <div className="p-3 bg-slate-50 border-t border-slate-100 flex items-center gap-2">
+              <div className="p-3 bg-[#faf6f0] border-t border-[#e7ded3] flex items-center gap-2">
                 <Link
                   to={`/rentals/${item._id}`}
                   className="btn-primary flex-1 text-xs py-2"
@@ -243,7 +243,7 @@ export default function ExploreRentalsPage() {
                 </Link>
                 <Link
                   to={`/barter?targetItem=${item._id}`}
-                  className="px-2.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-bold flex items-center gap-1 transition-colors border border-amber-200"
+                  className="px-2.5 py-2 rounded-xl bg-[#fef3c7] hover:bg-[#fde68a] text-[#92400e] text-xs font-bold flex items-center gap-1 transition-colors border border-[#fde68a]"
                   title="Propose Skill Barter Trade"
                 >
                   <ArrowRightLeft size={14} />
@@ -254,13 +254,13 @@ export default function ExploreRentalsPage() {
           ))}
         </div>
       ) : (
-        <div className="bg-white rounded-3xl border border-dashed border-slate-300 p-16 text-center max-w-md mx-auto">
-          <ShoppingBag size={40} className="mx-auto text-slate-300 mb-3" />
-          <h3 className="font-bold text-slate-800 text-base">No items available</h3>
-          <p className="text-xs text-slate-400 mt-1">Be the first on campus to list an item for rent!</p>
+        <div className="bg-white rounded-3xl border border-dashed border-[#e7ded3] p-16 text-center max-w-md mx-auto">
+          <ShoppingBag size={40} className="mx-auto text-stone-300 mb-3" />
+          <h3 className="font-bold text-stone-800 text-base">No items available</h3>
+          <p className="text-xs text-stone-400 mt-1">Be the first on campus to list an item for rent!</p>
           <Link
             to="/rentals/create"
-            className="btn-emerald mt-4 text-xs"
+            className="btn-forest mt-4 text-xs"
           >
             + Create First Listing
           </Link>

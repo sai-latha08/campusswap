@@ -5,21 +5,33 @@
     --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
     
-    /* Design Tokens */
-    --color-primary: #1e1b4b;
-    --color-primary-light: #4338ca;
-    --color-emerald: #059669;
-    --color-amber: #d97706;
-    --bg-canvas: #fafaf9;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --border-subtle: #e2e8f0;
+    /* ─── Warm Burgundy & Cream Design System Tokens ─── */
+    --color-burgundy-950: #380e1a;
+    --color-burgundy-900: #581c2e;
+    --color-burgundy-800: #70243b;
+    --color-burgundy-700: #881337;
+    --color-burgundy-light: #9f1239;
+    --color-burgundy-tint: #fff1f2;
+    
+    --color-cream-bg: #faf6f0;
+    --color-cream-card: #ffffff;
+    --color-cream-surface: #f4eee5;
+    --color-cream-border: #e7ded3;
+    
+    --color-gold-accent: #b45309;
+    --color-gold-light: #fef3c7;
+    --color-forest: #23533b;
+    --color-forest-tint: #ecfdf5;
+    
+    --text-primary: #1c1917;
+    --text-secondary: #57534e;
+    --text-muted: #8c827a;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--bg-canvas);
-    color: var(--text-main);
+    background-color: var(--color-cream-bg);
+    color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -27,54 +39,54 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.025em;
-    color: var(--text-main);
+    color: var(--text-primary);
     font-weight: 700;
   }
 }
 
-/* ─── Premium Modern Card Utilities ───────────────────────────────────── */
+/* ─── Warm Burgundy & Cream Card Utilities ────────────────────────────── */
 .cs-card {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-cream-border);
   border-radius: 1rem;
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px 0 rgba(88, 28, 46, 0.03), 0 1px 2px -1px rgba(88, 28, 46, 0.02);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cs-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  border-color: #d6c6b6;
+  box-shadow: 0 10px 25px -5px rgba(88, 28, 46, 0.06), 0 8px 10px -6px rgba(88, 28, 46, 0.04);
   transform: translateY(-2px);
 }
 
 .cs-card-flat {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-cream-border);
   border-radius: 1rem;
 }
 
-/* ─── Modern Buttons ─────────────────────────────────────────────────── */
+/* ─── Burgundy & Cream Button Utilities ───────────────────────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: #1e1b4b;
+  background: #581c2e;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.8125rem;
   padding: 0.625rem 1.25rem;
   border-radius: 0.75rem;
-  border: 1px solid #1e1b4b;
-  box-shadow: 0 1px 2px 0 rgba(30, 27, 75, 0.15);
+  border: 1px solid #451523;
+  box-shadow: 0 1px 2px 0 rgba(56, 14, 26, 0.2);
   transition: all 0.18s ease;
   cursor: pointer;
 }
 .btn-primary:hover {
-  background: #312e81;
-  border-color: #312e81;
+  background: #70243b;
+  border-color: #70243b;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px 0 rgba(49, 46, 129, 0.2);
+  box-shadow: 0 4px 14px 0 rgba(88, 28, 46, 0.25);
 }
 
 .btn-secondary {
@@ -83,45 +95,45 @@
   justify-content: center;
   gap: 0.5rem;
   background: #ffffff;
-  color: #1e293b;
+  color: #380e1a;
   font-weight: 600;
   font-size: 0.8125rem;
   padding: 0.625rem 1.25rem;
   border-radius: 0.75rem;
-  border: 1px solid #cbd5e1;
-  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--color-cream-border);
+  box-shadow: 0 1px 2px 0 rgba(88, 28, 46, 0.03);
   transition: all 0.18s ease;
   cursor: pointer;
 }
 .btn-secondary:hover {
-  background: #f8fafc;
-  border-color: #94a3b8;
-  color: #0f172a;
+  background: #fbf8f3;
+  border-color: #cbbbae;
+  color: #240810;
 }
 
-.btn-emerald {
+.btn-emerald, .btn-forest {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: #059669;
+  background: #23533b;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.8125rem;
   padding: 0.625rem 1.25rem;
   border-radius: 0.75rem;
-  border: 1px solid #059669;
-  box-shadow: 0 1px 2px 0 rgba(5, 150, 105, 0.15);
+  border: 1px solid #1a402d;
+  box-shadow: 0 1px 2px 0 rgba(35, 83, 59, 0.18);
   transition: all 0.18s ease;
   cursor: pointer;
 }
-.btn-emerald:hover {
-  background: #047857;
+.btn-emerald:hover, .btn-forest:hover {
+  background: #1a402d;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px 0 rgba(5, 150, 105, 0.25);
+  box-shadow: 0 4px 12px 0 rgba(35, 83, 59, 0.25);
 }
 
-/* ─── Badge Utilities ────────────────────────────────────────────────── */
+/* ─── Warm Badge Utilities ───────────────────────────────────────────── */
 .badge-subtle {
   display: inline-flex;
   align-items: center;
@@ -130,36 +142,36 @@
   border-radius: 9999px;
   font-size: 0.6875rem;
   font-weight: 600;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
-  color: #334155;
+  border: 1px solid var(--color-cream-border);
+  background: #fbf8f3;
+  color: #44403c;
 }
 
-.badge-indigo {
-  background: #eef2ff;
-  border: 1px solid #c7d2fe;
-  color: #4338ca;
+.badge-burgundy {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #881337;
 }
 
-.badge-emerald {
+.badge-forest {
   background: #ecfdf5;
   border: 1px solid #a7f3d0;
-  color: #047857;
+  color: #166534;
 }
 
-.badge-amber {
-  background: #fffbeb;
+.badge-gold {
+  background: #fef3c7;
   border: 1px solid #fde68a;
-  color: #b45309;
+  color: #92400e;
 }
 
-/* ─── Subtle Campus Campus Depth ─────────────────────────────────────── */
+/* ─── Warm Collegiate Campus Depth ────────────────────────────────────── */
 .campus-mesh {
-  background-color: #fafaf9;
+  background-color: #faf6f0;
   background-image: 
-    radial-gradient(at 15% 15%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
-    radial-gradient(at 85% 20%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
-    radial-gradient(at 50% 80%, rgba(245, 158, 11, 0.04) 0px, transparent 50%);
+    radial-gradient(at 15% 15%, rgba(136, 19, 55, 0.04) 0px, transparent 50%),
+    radial-gradient(at 85% 20%, rgba(35, 83, 59, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(180, 83, 9, 0.03) 0px, transparent 50%);
 }
 
 .perspective-isometric {
@@ -176,11 +188,11 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #d6c6b6;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #b5a290;
 }
 
 /* ─── Animation Support ──────────────────────────────────────────────── */

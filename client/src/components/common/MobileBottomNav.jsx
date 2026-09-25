@@ -21,7 +21,7 @@ export default function MobileBottomNav() {
   ];
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 pb-safe">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#fdfbf7]/95 backdrop-blur-md border-t border-[#e7ded3] pb-safe shadow-lg">
       <div className="grid grid-cols-5 sm:grid-cols-6 h-14 items-center px-1">
         {navItems.map((item) => {
           const isActive = item.exact
@@ -36,8 +36,8 @@ export default function MobileBottomNav() {
               to={item.href}
               className={`flex flex-col items-center justify-center py-1 transition-colors ${
                 isActive
-                  ? 'text-indigo-600 font-bold'
-                  : 'text-slate-500 hover:text-slate-900 font-medium'
+                  ? 'text-[#881337] font-bold'
+                  : 'text-stone-500 hover:text-stone-900 font-medium'
               }`}
             >
               <Icon size={18} className={isActive ? 'stroke-[2.5]' : 'stroke-2'} />

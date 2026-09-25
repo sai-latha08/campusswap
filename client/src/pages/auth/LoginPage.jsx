@@ -6,6 +6,7 @@ import { Mail, Lock, LogIn, ArrowRight, Sparkles, AlertCircle } from 'lucide-rea
 import toast from 'react-hot-toast';
 import api from '../../services/api';
 import { setCredentials } from '../../store/authSlice';
+import Logo from '../../components/common/Logo';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center px-4 py-16 subtle-grid">
+    <div className="min-h-[85vh] flex items-center justify-center px-4 py-16 bg-[#faf6f0]">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -64,20 +65,20 @@ export default function LoginPage() {
       >
         {/* Card Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-800 mb-4">
-            <Sparkles size={13} className="text-zinc-900" />
-            <span>Campus Identity</span>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff1f2] border border-[#fecdd3] text-xs font-semibold text-[#881337] mb-4">
+            <Sparkles size={13} className="text-[#881337]" />
+            <span>Verified Student Access</span>
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 font-display">Sign In to CampusSwap</h2>
-          <p className="text-sm text-zinc-500 mt-1.5">
-            Access your skills, rentals, barter offers, and campus trust score.
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-stone-900 font-display">Sign In to CampusSwap</h2>
+          <p className="text-sm text-stone-500 mt-1.5">
+            Access your skills, gear rentals, barter trades, and campus trust score.
           </p>
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-2xl p-8 border border-zinc-200 shadow-sm">
+        <div className="bg-white rounded-3xl p-8 border border-[#e7ded3] shadow-sm">
           {error && (
-            <div className="mb-6 p-3.5 bg-red-50/70 border border-red-200/80 rounded-xl text-xs text-red-600 flex items-start gap-2">
+            <div className="mb-6 p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-800 flex items-start gap-2">
               <AlertCircle size={15} className="mt-0.5 shrink-0" />
               <span>{error}</span>
             </div>
@@ -85,11 +86,11 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 tracking-tight mb-1.5">
+              <label className="block text-xs font-semibold text-stone-700 tracking-tight mb-1.5">
                 Campus Email
               </label>
               <div className="relative">
-                <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
+                <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
                 <input
                   type="email"
                   name="email"
@@ -97,19 +98,19 @@ export default function LoginPage() {
                   onChange={handleChange}
                   placeholder="student@university.edu"
                   required
-                  className="w-full pl-10 pr-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-sm text-zinc-900 placeholder-zinc-400 focus:bg-white focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 transition-all outline-none"
+                  className="w-full pl-10 pr-3.5 py-2.5 bg-[#faf6f0] border border-[#e7ded3] rounded-xl text-sm text-stone-900 placeholder-stone-400 focus:bg-white focus:border-[#881337] focus:ring-1 focus:ring-[#881337] transition-all outline-none"
                 />
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-zinc-700 tracking-tight">
+                <label className="block text-xs font-semibold text-stone-700 tracking-tight">
                   Password
                 </label>
               </div>
               <div className="relative">
-                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
+                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
                 <input
                   type="password"
                   name="password"
@@ -117,7 +118,7 @@ export default function LoginPage() {
                   onChange={handleChange}
                   placeholder="••••••••"
                   required
-                  className="w-full pl-10 pr-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-sm text-zinc-900 placeholder-zinc-400 focus:bg-white focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 transition-all outline-none"
+                  className="w-full pl-10 pr-3.5 py-2.5 bg-[#faf6f0] border border-[#e7ded3] rounded-xl text-sm text-stone-900 placeholder-stone-400 focus:bg-white focus:border-[#881337] focus:ring-1 focus:ring-[#881337] transition-all outline-none"
                 />
               </div>
             </div>
@@ -125,7 +126,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 text-white font-semibold rounded-xl text-sm transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer shadow-sm"
+              className="btn-primary w-full py-2.5 text-sm"
             >
               {loading ? (
                 <>
@@ -142,10 +143,10 @@ export default function LoginPage() {
           </form>
 
           {/* Footer link */}
-          <div className="mt-6 pt-6 border-t border-zinc-100 text-center">
-            <p className="text-xs text-zinc-500">
+          <div className="mt-6 pt-6 border-t border-stone-100 text-center">
+            <p className="text-xs text-stone-500">
               Don't have an account yet?{' '}
-              <Link to="/register" className="font-semibold text-zinc-900 hover:text-black inline-flex items-center gap-1 underline underline-offset-4">
+              <Link to="/register" className="font-semibold text-[#881337] hover:underline inline-flex items-center gap-1">
                 Register Free <ArrowRight size={12} />
               </Link>
             </p>
